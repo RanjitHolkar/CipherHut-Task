@@ -38,7 +38,7 @@ public actionEmpForm!:FormGroup;
 
   /* Get All Employee data */
   getEmpList() {
-    this.sharedService.spinner.next({status:true});
+    this.sharedService.spinner.next({status:true,borderColor:'blue',message:'Please wait getting employee details.'});
     this.employeeService.getEmpList().subscribe(res =>{
       if(res.status == 'success') {
         this.employees = res.data;
@@ -71,7 +71,7 @@ public actionEmpForm!:FormGroup;
 
   /* Add Employee */
   addEmployee() {
-    this.sharedService.spinner.next({status:true});
+    this.sharedService.spinner.next({status:true,borderColor:'blue',message:'Please wait adding employee.'});
     this.employeeService.addEmpDetails(this.actionEmpForm.value).subscribe(res => {
       if(res.status == 'success'){
         this.action = false;
@@ -99,7 +99,7 @@ public actionEmpForm!:FormGroup;
 
   /* Save Updated Employee Details */
   saveEmpEditDetails() {
-    this.sharedService.spinner.next({status:true});
+    this.sharedService.spinner.next({status:true,borderColor:'blue',message:'Please wait updating employee details.'});
     this.employeeService.updateEmpDetails(this.actionEmpForm.value,this.editDetails.id).subscribe(res =>{
       if(res.status == 'success'){
         this.action = false;
@@ -114,7 +114,7 @@ public actionEmpForm!:FormGroup;
 
   deleteEmployee(index:number) {
     if(confirm('are you sure you want to delete this Employee?')){
-      this.sharedService.spinner.next({status:true,borderColor:'black',message:'Please wait detating user.'});
+      this.sharedService.spinner.next({status:true,borderColor:'red',message:'Please wait detating employee.'});
       this.employeeService.deleteEmployee(this.employees[index].id).subscribe(res =>{
         if(res.status) {
           this.employees.splice(index, 1);
