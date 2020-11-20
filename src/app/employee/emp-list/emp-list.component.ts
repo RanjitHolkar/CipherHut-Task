@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EncryptDecryptService } from 'src/app/services/Encrypt-decrypt/encrypt-decrypt.service';
 import { SharedService } from 'src/app/services/shared.service';
-import { ToasterComponent } from 'src/app/toaster/toaster.component';
+import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -12,8 +12,7 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./emp-list.component.css']
 })
 export class EmpListComponent implements OnInit {
-  @ViewChild(ToasterComponent) toaster!: ToasterComponent;
-public employees:any = [];
+public employees:Employee[] = [];
 public submitted:Boolean = false;
 public action:Boolean = false;
 public editDetails:any;
@@ -49,8 +48,9 @@ public actionEmpForm!:FormGroup;
   }
 
   /* View Employe Details */
-  viewEmpDetails(index:any) {
-    this.sharedService.empDetails.next(this.employees[index]);
+  viewEmpDetails(index:number) {
+    let data =Object.assign(this.employees[index]);
+    this.sharedService.empDetails.next(data);
     this.router.navigate(['/emp-details']);
   }
   /* Return Form Controls */

@@ -714,7 +714,7 @@ body.msb-x .msb {
 }
 
 /* Slide in animation */
-@-moz-keyframes slidein {
+/* @-moz-keyframes slidein {
   0% {
     left: -200px;
   }
@@ -809,7 +809,7 @@ body.msb-x .msb {
   100% {
     margin-left: 0;
   }
-}
+} */
 .invalid-feedback {
   color:red;
 }
