@@ -1,0 +1,45 @@
+<!-- Success Popup Div Starts -->
+<div class="commonOverlay" *ngIf="success">
+  <div class="successPopupDiv">
+    <img src="/assets/images/correct.png" class="successImg" alt="">
+    <div class="popupDetails">
+      <h2>Awesome !</h2>
+      <p>{{msg}}</p>
+    </div>
+    <button class="commonBlueBtn popupBtn" (click)="success = false">OK</button>
+  </div>
+</div>
+<!-- Success Popup Div Ends -->
+<!-- Confirmation Popup Div Starts -->
+<div class="commonOverlay" *ngIf="confirm">
+  <div class="successPopupDiv deltPopup">
+    <img src="/assets/images/closexicon.png" class="closeBtn" alt="">
+    <div class="CancelImg">
+      <img src="/assets/images/cancel.png" alt="">
+    </div>
+    <div class="popupDetails ">
+      <h2>Are You Sure !</h2>
+      <p>Do you really want to delete these records? This process cannot be undone.</p>
+    </div>
+    <button class="commonWhiteBtn popupBtn">Cancel</button>
+    <button class="commonBlueBtn popupBtn">Delete</button>
+  </div>
+</div>
+<!-- Confirmation Popup Div Ends -->
+<!-- Error Popup Div Starts -->
+<div class="commonOverlay" *ngIf="error">
+  <div class="successPopupDiv deltPopup">
+    <img src="/assets/images/closexicon.png" class="closeBtn" alt="">
+    <!-- <div class="CancelImg">
+      <img src="/assets/images/warning.png" alt="">
+    </div> -->
+    <div class="popupDetails ">
+      <h2 class="errorHead">OOPS...!</h2>
+      <p>{{msg}}</p>
+    </div>
+    <button class="commonBlueBtn popupBtn ErrorBtn" (click)="error = false">OK</button>
+  </div>
+</div>
+<!-- Error Popup Div Ends -->
+
+

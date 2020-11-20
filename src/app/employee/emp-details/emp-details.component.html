@@ -1,0 +1,59 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="mcw">
+   <div class="cv">
+      <div class="container emp-profile">
+         <form method="post">
+            <div class="row">
+               <div class="col-md-6" *ngIf="employeeDetails">
+                  <div class="profile-head">
+                     <h5>
+                        {{employeeDetails.employee_name}}
+                     </h5>
+                     <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" >About</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <input type="button" class="profile-edit-btn" (click)="backPage()" name="btnAddMore" value="Back"/>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="tab-content profile-tab" id="myTabContent" >
+                     <div id="home" >
+                        <div class="row">
+                           <div class="col-md-6">
+                              <label>Id</label>
+                           </div>
+                           <div class="col-md-6">
+                              <p>{{employeeDetails.id}}</p>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <label>age</label>
+                           </div>
+                           <div class="col-md-6">
+                              <p>{{employeeDetails.employee_age}}</p>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <label>Salary</label>
+                           </div>
+                           <div class="col-md-6">
+                              <p>{{employeeDetails.employee_salary}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

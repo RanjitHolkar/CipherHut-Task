@@ -1,0 +1,70 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="mcw">
+   <div class="cv">
+      <div class="container">
+         <div class="table-top">
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Id</th>
+                     <th>Employe Name</th>
+                     <th>Action<button class="btn btn-success" (click)="action = true;actionEmpForm.reset();formTitle='Add'">Add</button></th>
+                  </tr>
+               </thead>
+               <tbody >
+                  <tr *ngFor="let employe of employees; trackBy: trackByFn;let i = index" >
+                     <td>{{employe.id}}</td>
+                     <td>{{employe.employee_name}}</td>
+                     <td>
+                        <button class="btn btn-info" (click)="viewEmpDetails(i)">View</button>
+                        <button class="btn btn-success"(click)="editEmployeeDetails(i)">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteEmployee(i)">Delete</button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="myModal" class="modal" *ngIf="action">
+   <!-- Modal content -->
+   <div class="modal-content">
+      <span class="close" (click)="action = false">&times;</span>
+      <h3>{{formTitle}} Employee Details</h3>
+      <form class="needs-validation" [formGroup]="actionEmpForm">
+         <div class="row">
+            <div class="col-md-12 mb-3">
+               <label for="validationCustom01">Employee Name</label>
+               <input type="text" class="form-control" formControlName="name" id="validationCustom01" placeholder="Employee Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+               <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Employee name is required</div>
+               </div>
+            </div>
+            <div class="col-md-12 mb-3">
+               <label for="validationCustom02">Employee Salary</label>
+               <input type="text" class="form-control" formControlName="salary" id="validationCustom02" placeholder="Employee salary" [ngClass]="{ 'is-invalid': submitted && f.salary.errors }">
+               <div *ngIf="submitted && f.salary.errors" class="invalid-feedback">
+                  <div *ngIf="f.salary.errors.required">Employee salary is required</div>
+                  <div *ngIf="f.salary.errors.pattern">Please enter only numbers</div>
+               </div>
+            </div>
+            <div class="col-md-12 mb-3">
+               <label for="validationCustomUsername">Age</label>
+               <div class="input-group">
+                  <input type="text" class="form-control" formControlName="age" id="validationCustomUsername" placeholder="Age" [ngClass]="{ 'is-invalid': submitted && f.age.errors }">
+                  <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                     <div *ngIf="f.age.errors.required">Age is required</div>
+                     <div *ngIf="f.age.errors.pattern">Please enter only numbers</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-success" (click)="formSubmit()">Save</button>
+            <button class="btn btn-danger" (click)="action = false;actionEmpForm.reset();submitted = false">Cancel</button>
+         </div>
+      </form>
+   </div>
+</div>
